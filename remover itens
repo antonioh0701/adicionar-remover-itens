@@ -1,0 +1,124 @@
+# Atividade 1: Lista de compras com adicionar/remover itens
+def lista_de_compras():
+    lista = []
+
+    while True:
+        print("\n--- Lista de Compras ---")
+        print("1 - Adicionar item")
+        print("2 - Remover item")
+        print("3 - Ver lista")
+        print("4 - Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            item = input("Digite o nome do item para adicionar: ")
+            lista.append(item)
+            print(f"{item} adicionado à lista.")
+        elif opcao == "2":
+            item = input("Digite o nome do item para remover: ")
+            if item in lista:
+                lista.remove(item)
+                print(f"{item} removido da lista.")
+            else:
+                print("Item não encontrado na lista.")
+        elif opcao == "3":
+            print("Lista atual:", lista)
+        elif opcao == "4":
+            break
+        else:
+            print("Opção inválida.")
+
+# Atividade 2: Dicionário com dados de um aluno
+def dados_do_aluno():
+    aluno = {
+        "nome": input("Digite o nome do aluno: "),
+        "idade": int(input("Digite a idade do aluno: ")),
+        "notas": [float(nota) for nota in input("Digite as notas separadas por espaço: ").split()]
+    }
+
+    print("\n--- Dados do Aluno ---")
+    for chave, valor in aluno.items():
+        print(f"{chave.capitalize()}: {valor}")
+
+# Atividade 3: Separar pares e ímpares
+def separar_pares_impares():
+    numeros = [int(n) for n in input("Digite os números separados por espaço: ").split()]
+    pares = []
+    impares = []
+
+    for n in numeros:
+        if n % 2 == 0:
+            pares.append(n)
+        else:
+            impares.append(n)
+
+    print("Números pares:", pares)
+    print("Números ímpares:", impares)
+
+# Desafio Extra: Agenda de contatos com dicionário
+def agenda_contatos():
+    agenda = {}
+
+    while True:
+        print("\n--- Agenda de Contatos ---")
+        print("1 - Adicionar contato")
+        print("2 - Remover contato")
+        print("3 - Buscar contato")
+        print("4 - Ver todos os contatos")
+        print("5 - Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            nome = input("Nome do contato: ")
+            telefone = input("Número de telefone: ")
+            agenda[nome] = telefone
+            print("Contato adicionado com sucesso.")
+        elif opcao == "2":
+            nome = input("Nome do contato a remover: ")
+            if nome in agenda:
+                del agenda[nome]
+                print("Contato removido.")
+            else:
+                print("Contato não encontrado.")
+        elif opcao == "3":
+            nome = input("Nome do contato para buscar: ")
+            if nome in agenda:
+                print(f"Telefone de {nome}: {agenda[nome]}")
+            else:
+                print("Contato não encontrado.")
+        elif opcao == "4":
+            print("Contatos salvos:")
+            for nome, telefone in agenda.items():
+                print(f"{nome}: {telefone}")
+        elif opcao == "5":
+            break
+        else:
+            print("Opção inválida.")
+
+# Menu principal para testar as atividades
+def main():
+    while True:
+        print("\n=== MENU PRINCIPAL ===")
+        print("1 - Lista de Compras")
+        print("2 - Dados do Aluno")
+        print("3 - Separar Pares e Ímpares")
+        print("4 - Agenda de Contatos")
+        print("5 - Sair")
+        escolha = input("Escolha a atividade: ")
+
+        if escolha == "1":
+            lista_de_compras()
+        elif escolha == "2":
+            dados_do_aluno()
+        elif escolha == "3":
+            separar_pares_impares()
+        elif escolha == "4":
+            agenda_contatos()
+        elif escolha == "5":
+            print("Encerrando o programa.")
+            break
+        else:
+            print("Opção inválida.")
+
+if __name__ == "__main__":
+    main()
